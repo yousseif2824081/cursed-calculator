@@ -1,17 +1,18 @@
 body {
-    background: #f4cbf4;
+    background: #dddddd;
     color: black;
     text-align: center;
+    font-family: "Times New Roman", serif;
 }
 
 marquee{
-    background: blue;
+    background: rgb(60, 169, 100);
     color: white;
     font-size: 30px;
 }
 
 h1{
-    font-size: 50px;
+    font-size: 32px;
 }
 
 .blink{
@@ -22,3 +23,29 @@ h1{
     50% { opacity: 0; }
 }
 
+#display {
+    background: white;
+    margin: 15px auto;
+    padding: 10px;
+    text-align: right;
+    font-size: 30px;
+    font-family: "Times New Roman", serif;
+    width: 250px;
+    border: 2px solid black;
+}
+
+#comment {
+    margin: 10px;
+    font-size: 15px;
+}
+
+button {
+    width: 60px;
+    height: 50px;
+    margin: 3px;
+    font-size: 25px;
+}
+
+.small {
+    font-size: 12px;
+}
