@@ -54,6 +54,23 @@ buttons.forEach((btn) => {
             current = "";
             display.textContent = "0";
         }
+        
+        else if (value === "="){
+            const correct = calculate(current);
+            if (correct === null){
+                display.textContent = "???";
+                current = "";
+                return;
+            }
+
+            display.textContent = curse(correct);
+
+            current = "";
+
+            wrongCount++;
+            wrongCountEl.textContent = wrongCount;
+            comment.textContent = comments[Math.floor(Math.random() * comments.length)];
+        }
 
         else {
             current += value;
