@@ -13,18 +13,18 @@ const comments = [
 const curses =[
     (n) => n + 1,
     (n) => n - 2,
-    (n) => {n * 2},
+    (n) => n * 2,
     (n) => n + Math.floor(Math.random() * 10),
     (n) => Number(String(n).split("").reverse().join(""))
 ];
 
 function calculate(expression){
-    const match = expression.match(/^(\d+)([+\-*\/])(\d+)$/);
+    const match = expression.match(/^(\d+)([+\-x\/])(\d+)$/);
     if (!match) return null;
 
-    const a = match[1];
-    const b = match[2];
-    const c = match[3];
+    const a = Number(match[1]);
+    const op = match[2];
+    const b = Number(match[3]);
 
     if (op === "+") return a+b;
     if (op === "-") return a-b;
@@ -33,9 +33,13 @@ function calculate(expression){
 }
 
 function curse(correct){
+    if (!Number.isFinite(correct)){
+        return "nice try ;)";
+    }
     const pick = curses[Math.floor(Math.random() * curses.length)];
     let cursed = pick(correct);
-    if (cursed = correct){
+
+    if (Number.isNaN(cursed) || cursed === correct){
         cursed = correct + 1;
     }
 
@@ -43,12 +47,11 @@ function curse(correct){
 }
 
 let current = "";
+let wrongCount = 0;
 
 buttons.forEach((btn) => {
     btn.addEventListener("click", () => {
         const value = btn.dataset.value;
-
-        let wrongCount = 0;
 
         if (value === "C") {
             current = "";
